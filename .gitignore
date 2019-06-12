@@ -1,0 +1,4 @@
+log.*
+*.foam
+multiRegionTutorial/[1-9]0/
+multiRegionTutorial/[1-9]00/

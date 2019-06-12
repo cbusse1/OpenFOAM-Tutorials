@@ -1,0 +1,72 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1812                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       polyBoundaryMesh;
+    location    "constant/heater/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+7
+(
+    maxY
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          200;
+        startFace       19550;
+    }
+    minX
+    {
+        type            patch;
+        nFaces          50;
+        startFace       19750;
+    }
+    maxX
+    {
+        type            patch;
+        nFaces          50;
+        startFace       19800;
+    }
+    minY
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          200;
+        startFace       19850;
+    }
+    minZ
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          10000;
+        startFace       20050;
+    }
+    maxZ
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          10000;
+        startFace       30050;
+    }
+    heater_to_water
+    {
+        type            mappedWall;
+        inGroups        1(wall);
+        nFaces          400;
+        startFace       40050;
+        sampleMode      nearestPatchFace;
+        sampleRegion    water;
+        samplePatch     water_to_heater;
+    }
+)
+
+// ************************************************************************* //

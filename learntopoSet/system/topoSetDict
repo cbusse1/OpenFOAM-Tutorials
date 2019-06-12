@@ -23,7 +23,7 @@ actions
         type    cellSet;
         action  new;
         source  boxToCell;
-        sourceInfo
+        sourceInfo //grab all the cells, that can be found inside the specified box
         {
             box (-0.01001    0 -100 )(0.01001 0.00999 100); // box1 
         }
@@ -36,21 +36,11 @@ actions
         source  setToCellZone;
         sourceInfo
         {
-            set heaterCellSet;
+            set heaterCellSet; //include the heaterCellSet to the cellZone heater = physical domain. e.g. one could include multiple heater(= multiple cellSets) to this zone 
         }
     }
-/*
 
-    {
-        name    heaterCellSet;
-        type    cellSet;
-        action  add;
-        source  boxToCell;
-        sourceInfo
-        {
-            box (-0.01001 -100 -0.01001)(0.01001 0.00999 0.01001); // box 2
-        }
-    }
+
     // leftSolid
     {
         name    leftSolidCellSet;
@@ -60,16 +50,6 @@ actions
         sourceInfo
         {
             box (-100 0 -100 )(-0.01001 0.00999 100);
-        }
-    }
-    {
-        name    leftSolid;
-        type    cellZoneSet;
-        action  new;
-        source  setToCellZone;
-        sourceInfo
-        {
-            set leftSolidCellSet;
         }
     }
 
@@ -82,16 +62,6 @@ actions
         sourceInfo
         {
             box (0.01001 0 -100 )(100 0.00999 100);
-        }
-    }
-    {
-        name    rightSolid;
-        type    cellZoneSet;
-        action  new;
-        source  setToCellZone;
-        sourceInfo
-        {
-            set rightSolidCellSet;
         }
     }
 
@@ -116,7 +86,6 @@ actions
             set topAirCellSet;
         }
     }
-
 
     // bottomWater is all the other cells
     {
@@ -163,7 +132,48 @@ actions
         name    bottomWaterCellSet;
         type    cellSet;
         action  invert;
+    } 
+/*
+
+    {
+        name    heaterCellSet;
+        type    cellSet;
+        action  add;
+        source  boxToCell;
+        sourceInfo
+        {
+            box (-0.01001 -100 -0.01001)(0.01001 0.00999 0.01001); // box 2
+        }
     }
+
+    {
+        name    leftSolid;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set leftSolidCellSet;
+        }
+    }
+
+
+    {
+        name    rightSolid;
+        type    cellZoneSet;
+        action  new;
+        source  setToCellZone;
+        sourceInfo
+        {
+            set rightSolidCellSet;
+        }
+    }
+
+
+
+
+
+
     {
         name    bottomWater;
         type    cellZoneSet;
